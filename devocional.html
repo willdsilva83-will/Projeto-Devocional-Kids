@@ -3,20 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <title>Devocional</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div id="conteudo"></div>
 <button id="btnConcluir">Marcar como concluído</button>
 
-<script src="js/progresso.js"></script>
+<script src="progresso.js"></script>
 
 <script>
 const params = new URLSearchParams(window.location.search);
 const id = params.get('id');
 
-fetch('data/devocionais.json')
+fetch('devocionais.json')
   .then(res => res.json())
   .then(devocionais => {
     const devocional = devocionais.find(d => d.id === id);
