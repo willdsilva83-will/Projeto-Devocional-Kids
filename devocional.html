@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Devocional</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="conteudo"></div>
+<button id="btnConcluir">Marcar como concluído</button>
+
+<script src="js/progresso.js"></script>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const id = params.get('id');
+
+fetch('data/devocionais.json')
+  .then(res => res.json())
+  .then(devocionais => {
+    const devocional = devocionais.find(d => d.id === id);
+    const conteudoDiv = document.getElementById('conteudo');
+
+    if (!devocional) {
+      conteudoDiv.innerHTML = "<p>Devocional não encontrado.</p>";
+      return;
+    }
+
+    conteudoDiv.innerHTML = `
+      <h1>${devocional.titulo}</h1>
+      <p><strong>Data:</strong> ${devocional.data}</p>
+      <p>${devocional.conteudo}</p>
+    `;
+
+    const btn = document.getElementById('btnConcluir');
+
+    if (isConcluido(id)) {
+      btn.innerText = "Devocional já concluído ✔";
+      btn.disabled = true;
+    }
+
+    btn.onclick = () => {
+      marcarConcluido(id);
+      btn.innerText = "Devocional concluído ✔";
+      btn.disabled = true;
+    };
+  });
+</script>
+
+</body>
+</html>

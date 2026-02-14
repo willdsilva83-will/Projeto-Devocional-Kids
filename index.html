@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Devocional Infantil</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="top-bar">
+  <div>
+    <button onclick="login()">Entrar / Cadastrar</button>
+    <button onclick="logout()">Sair</button>
+  </div>
+  <div id="usuarioInfo"></div>
+</div>
+
+<h1>Devocional Infantil</h1>
+
+<a href="devocionais.html">
+  <button>Ver Devocionais</button>
+</a>
+
+<script src="js/auth.js"></script>
+<script>
+const usuario = localStorage.getItem('usuario_logado');
+document.getElementById('usuarioInfo').innerText =
+  "Usuário: " + (usuario ? usuario : "Anônimo");
+</script>
+
+</body>
+</html>
