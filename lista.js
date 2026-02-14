@@ -1,4 +1,4 @@
-fetch('data/devocionais.json')
+fetch('devocionais.json')
   .then(res => res.json())
   .then(devocionais => {
     const lista = document.getElementById('lista');
